@@ -1,0 +1,65 @@
+---
+description: Dual-Track TDD branch constraints (red / green / refactoring)
+alwaysApply: true
+---
+
+# Dual-Track TDD Branch Rules
+
+Method: **Outside-In** — acceptance tests first, then unit-test RGR.
+
+## `red` branch — outer Red only
+
+**Allowed**
+- Write acceptance / integration tests (e.g. pytest + subprocess CLI)
+- Test scaffolding: `tests/`, `pytest.ini`, `requirements-dev.txt`
+- Minimal stubs only if tests require importable modules (prefer testing CLI first)
+
+**Forbidden**
+- Production implementation to make tests pass
+- Weakening assertions so existing code passes without real behavior
+
+**Done when**
+- AT-1, AT-1b, AT-2 … AT-5 exist and **all fail** for the expected reason
+- User creates `green` branch
+
+## `green` branch — inner RGR → outer Green
+
+**Allowed**
+- Unit tests (Red → Green → Refactor per behavior)
+- Minimal production code until acceptance tests pass
+- Extract logic from `UnitConverter.py` as tests drive design
+
+**Forbidden**
+- Changing acceptance tests to match wrong implementation (unless spec error)
+- Over-engineering beyond current failing tests
+- README step-04 extras (config file, dynamic units, JSON/CSV)
+
+**Done when**
+- All acceptance scenarios **Green**
+- User creates `refactoring` branch
+
+## `refactoring` branch — structure only
+
+**Allowed**
+- Split into `InputParser`, `UnitRegistry`, `Converter`, `OutputFormatter`
+- Remove duplication, improve naming, apply OCP/SRP
+- Small refactors with all tests green after each step
+
+**Forbidden**
+- Behavior changes without updated tests
+- Deleting tests to stay green
+- New features outside basic + quality requirements
+
+**Done when**
+- Clean structure, all tests Green, refactoring report complete
+
+## Acceptance scenarios (from spec)
+
+| ID | Input | Expected |
+|----|-------|----------|
+| AT-1 | `meter:2.5` | 3-unit output, 1 decimal place |
+| AT-1b | `meter:0` | zero conversion allowed |
+| AT-2 | `meter2.5` | `Invalid format. Use unit:value (ex: meter:2.5)` |
+| AT-3 | `meter:abc` | `Invalid number: abc` |
+| AT-4 | `meter:-1` | `Invalid number: -1` |
+| AT-5 | `mile:1` | `Unknown unit: mile` |
