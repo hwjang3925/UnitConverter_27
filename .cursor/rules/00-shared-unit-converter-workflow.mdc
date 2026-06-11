@@ -1,0 +1,47 @@
+---
+description: Unit Converter 실습 브랜치·단계·산출물 워크플로 (00 shared)
+alwaysApply: true
+---
+
+# Unit Converter Workflow
+
+## Branch roadmap
+
+| No | Branch | Role |
+|----|--------|------|
+| 01 | `spec` | Analyze + Mom Test |
+| 02 | `red` | Outer loop Red |
+| 03 | `green` | Inner RGR → outer Green |
+| ~~04~~ | — | **Excluded** |
+| 05 | `refactoring` | Refactor (OCP/SRP) |
+
+Flow: `spec` → `red` → `green` → `refactoring`
+
+## Git rules
+
+- Commit on the **current phase branch** only.
+- Do **not** merge into `main` unless the user explicitly asks.
+- Do **not** create or switch branches unless the user asks; **announce when the next branch should be created**.
+
+## Phase artifacts
+
+- `Report/{NN}-{phase-slug}-report.md`
+- `Prompting/{NN}-{phase-slug}-transcript.md`
+- `.cursor/` step files per `.cursor/00-index.md`
+
+| No | phase-slug | Branch |
+|----|------------|--------|
+| 01 | `spec-requirements-analysis` | `spec` |
+| 02 | `acceptance-red` | `red` |
+| 03 | `basic-green` | `green` |
+| 05 | `refactoring` | `refactoring` |
+
+## Scope
+
+- In scope: basic conversion, validation, OCP/SRP, Dual-Track TDD, reports/transcripts, Mom Test on spec.
+- Out of scope: config externalization, dynamic unit registration, JSON/CSV output (step 04).
+
+## Reference
+
+- `Report/01-spec-requirements-analysis-report.md`
+- `.cursor/00-index.md`

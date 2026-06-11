@@ -1,0 +1,65 @@
+---
+description: Dual-Track TDD branch constraints red/green/refactoring (00 shared)
+alwaysApply: true
+---
+
+# Dual-Track TDD Branch Rules
+
+Method: **Outside-In** — acceptance tests first, then unit-test RGR.
+
+## `spec` branch — Analyze + Mom Test
+
+**Allowed**
+- Requirements analysis, Mom Test Q&A, Report/Prompting for step 01
+- Scenario tables AT-1 … AT-5, AT-1b
+
+**Forbidden**
+- Acceptance test implementation (step 02 `red`)
+- Production code changes to pass future tests
+
+**Done when**
+- Mom Test recorded; user moves to `red`
+
+## `red` branch — outer Red only
+
+**Allowed**
+- Acceptance / integration tests (pytest + CLI)
+- `tests/`, `pytest.ini`, `requirements-dev.txt`
+
+**Forbidden**
+- Production implementation to make tests pass
+- Weakening assertions
+
+**Done when**
+- AT scenarios tested; expected failures confirmed; user moves to `green`
+
+## `green` branch — inner RGR → outer Green
+
+**Allowed**
+- Unit tests RGR; minimal production code
+
+**Forbidden**
+- Changing acceptance tests to hide bugs (unless spec error)
+- Step-04 extras
+
+**Done when**
+- All acceptance tests Green; user moves to `refactoring`
+
+## `refactoring` branch — structure only
+
+**Allowed**
+- OCP/SRP split; refactor with tests Green
+
+**Forbidden**
+- Behavior changes without tests; deleting tests
+
+## Acceptance scenarios
+
+| ID | Input | Expected |
+|----|-------|----------|
+| AT-1 | `meter:2.5` | `8.2 feet`, `2.7 yard` (1 decimal) |
+| AT-1b | `meter:0` | `0.0 feet`, `0.0 yard` |
+| AT-2 | `meter2.5` | format error message |
+| AT-3 | `meter:abc` | `Invalid number: abc` |
+| AT-4 | `meter:-1` | `Invalid number: -1` |
+| AT-5 | `mile:1` | `Unknown unit: mile` |

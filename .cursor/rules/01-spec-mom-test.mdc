@@ -1,0 +1,50 @@
+---
+description: Mom Test requirements validation on spec branch (01 spec)
+globs: "Report/**,.cursor/**"
+alwaysApply: false
+---
+
+# 01 Spec — Mom Test Rule
+
+Apply on branch **`spec`** when validating requirements before `red`.
+
+## Mom Test purpose
+
+Filter vague praise and hypotheticals. Validate requirements with **concrete problems**, README examples, and starter code behavior **before** writing acceptance tests.
+
+## Three principles
+
+1. **Discard praise** — ignore "good idea", "would use".
+2. **Past and concrete** — README output examples, starter stdout, real failure cases.
+3. **Problems over ideas** — "wrong rounding output", not "unit converter feature".
+
+## Required Mom Test topics
+
+| Topic | Validate |
+|-------|----------|
+| Rounding | README `8.2 feet` requires 1-decimal converted output |
+| Zero | `meter:0` is valid |
+| Negative | `meter:-1` must error, not convert |
+| Errors | Starter message strings preserved |
+| Scope | Step-04 extras excluded |
+
+## PASS/FAIL output
+
+Record in Report §11 Mom Test using **Speaker** and **Authority** columns (see `00-shared-report-prompting-format.mdc`):
+
+**Problem table:** `| ID | Question | Answer | Speaker |`
+
+**Validation table:** `| ID | Validation | Result | AT | Authority |`
+
+- Result: PASS / FAIL / NOTE (known limitation)
+- Authority on PASS/FAIL: always **사람** (or **AI 제안 → 사람 확정**)
+
+## User role
+
+User decides final PASS/FAIL and whether spec changes. AI drafts questions and mappings only.
+
+## Gate
+
+Do not recommend starting `red` acceptance tests until Mom Test section is written and user confirms complete.
+
+See `.cursor/harness/01-spec-gate.md` and skill `01-spec-mom-test`.
