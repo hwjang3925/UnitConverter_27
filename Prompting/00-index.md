@@ -10,6 +10,12 @@ Report 폴더와 **동일 번호·slug**를 사용합니다.
 Prompting/{NN}-{phase-slug}-transcript.md
 ```
 
+## Attribution
+
+- `## Turn N — User` = **사람**
+- `## Turn N — Assistant` = **AI**
+- Report에 요약할 때는 Speaker/Authority 표 사용 (전문 복붙 + 접미사 남발 금지)
+
 ## Export 목록
 
 | No | File | Phase | Branch |

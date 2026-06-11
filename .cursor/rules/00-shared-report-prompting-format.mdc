@@ -19,8 +19,29 @@ Prompting/{NN}-{phase-slug}-transcript.md
 
 Include: Step, Phase, Branch, Method, Date, Status.
 
+## Attribution (Speaker / Authority)
+
+Do **not** suffix every sentence with `(사람)` / `(AI)`. Use by artifact type:
+
+| Artifact | Format |
+|----------|--------|
+| **Prompting/ Transcript** | `## Turn N — User` / `## Turn N — Assistant` only (no extra suffix) |
+| **Report — discussion** | Table column **Speaker**: `사람` \| `AI` \| `AI 제안 → 사람 확정` |
+| **Report — decisions** | Table columns **Decision** + **Authority**: `사람` \| `AI 제안 → 사람 확정` |
+| **Short bullets** (optional) | End with `(사람)` or `(AI)` only for one-line notes |
+
+Speaker values:
+
+- **사람** — user experience, answers, final PASS/FAIL, final rule choice
+- **AI** — analysis draft, question rewrite, gap table (until user approves)
+- **AI 제안 → 사람 확정** — user accepted AI draft as final
+
+Code and tests: use **git commit author**, not inline `(AI)` in source files.
+
 ## Transcript header
 
 Include: Step, Phase, Branch, Exported, Source.
+
+Body: Turn User = 사람, Turn Assistant = AI. Do not duplicate transcript prose into Report without Speaker column.
 
 Update `Report/00-index.md` and `Prompting/00-index.md` on phase completion.

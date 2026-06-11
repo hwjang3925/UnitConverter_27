@@ -7,7 +7,7 @@
 | Branch | `spec` |
 | Method | Dual-Track TDD #1 (Outside-In) |
 | Date | 2026-06-11 |
-| Status | **Complete** |
+| Status | **Complete** (incl. Mom Test §11) |
 
 ---
 
@@ -165,13 +165,57 @@ InputParser (검증)  →  Converter (meter 기준 변환)
 ✅ 내부 단위 테스트 목록 정리               → §6 (UT-1 ~ UT-11)
 ✅ 클래스 역할 분리 메모                    → §7
 ✅ 반올림: 소수 1자리 / 0 허용 / 오류 메시지 → §3
+✅ Mom Test (Q1~Q5, V1~V8) + Speaker/Authority → §11
 ```
+
+---
+
+## 11. Mom Test (요구사항 검증)
+
+대화 원본: `Prompting/01-spec-requirements-analysis-transcript.md` (Turn User = **사람**, Assistant = **AI**).
+
+### 11.1 Problem — Speaker
+
+| ID | Question | Answer | Speaker |
+|----|----------|--------|---------|
+| Q1 | 단위 변환 도구 없이 길이를 바꿀 때 어떤 불편이 있는가? | 수동 계산·검색 필요, 실수·단위 혼동. `unit:value` 한 줄로 meter/feet/yard를 한 번에 보고 싶음. | AI |
+| Q2 | README `8.2 feet`, `2.7 yard` 출력은 어떤 문제를 푸는가? | starter는 `8.2021 feet` 등 긴 소수 출력 → README 예시와 불일치, 읽기 어려움. **변환 결과만 소수 1자리** 필요. | AI |
+| Q3 | starter에서 지금 무엇이 깨지는가? | ① 반올림 없음 ② `meter:-1` 변환됨 ③ 형식/문자/unknown unit은 이미 처리됨 | AI |
+| Q4 | 아주 **큰 길이** 입력 후 다른 단위로 바꿨을 때 직관적이지 않았던 적이 있는가? | 큰 값을 변환하면 결과 숫자가 커져 **감이 잡히지 않음**. | **사람** |
+| Q5 | **0.02**처럼 작은 값 입력 시 단위 변환이 어려웠던 적이 있는가? | 소수·작은 길이 변환이 **헷갈림**. | **사람** |
+
+### 11.2 Validation — Authority
+
+| ID | Validation | Result | AT | Authority |
+|----|------------|--------|-----|-----------|
+| V1 | 1자리 반올림 없으면 README와 불일치 | PASS | AT-1 | AI 제안 → 사람 확정 |
+| V2 | `meter:0` 차단 시 정상 사용 불가 | PASS (0 허용) | AT-1b | AI 제안 → 사람 확정 |
+| V3 | `meter:-1` 변환 시 입력 오류 은폐 | PASS (음수 거부) | AT-4 | AI 제안 → 사람 확정 |
+| V4 | 오류 문구 변경 시 과제·starter와 불일치 | PASS (문구 유지) | AT-2~5 | AI 제안 → 사람 확정 |
+| V5 | step-04 없이 기본+품질 요구 충족 가능 | PASS (04 제외) | scope | AI 제안 → 사람 확정 |
+| V6 | README가 입력 상한·과학적 표기 요구 | PASS (범위外) | scope | AI 제안 → 사람 확정 |
+| V7 | `0.02` 등 작은 양수 유효 입력 | PASS | — | AI 제안 → 사람 확정 |
+| V8 | 극소 입력 + 1자리 반올림 시 여전히 혼란 가능 | NOTE | — | AI (한계 기록) |
+
+**NOTE (V8):** `meter:0.02` → feet 약 `0.1` (반올림). 0으로 보이진 않으나 **아주 작은 입력**은 여전히 직관적이지 않을 수 있음. README 범위 밖 — 별도 AT 미추가.
+
+### 11.3 Decisions — Authority
+
+| Decision | Value | Authority |
+|----------|-------|-----------|
+| 변환 출력 반올림 | feet/yard **소수 1자리** | **사람** |
+| 0 입력 | **허용** | **사람** |
+| 음수 입력 | **거부** | **사람** |
+| 오류 메시지 | starter 문구 유지 | **사람** |
+| 큰 입력 상한/표기 | **요구 없음** (Q4는 동기만) | AI 제안 → 사람 확정 |
+| step-04 extras | **제외** | AI 제안 → 사람 확정 |
+| AT 시나리오 변경 | **없음** (V1~V7 PASS) | **사람** |
 
 ---
 
 ## 9. 다음 단계
 
-**01 spec 완료** → `red` 브랜치 생성 후 02단계 진행
+**01 spec + Mom Test 완료** → `red` 브랜치에서 02단계
 
 다음 작업:
 1. 실패하는 인수 테스트만 작성 (구현 코드 없음)
@@ -182,9 +226,12 @@ InputParser (검증)  →  Converter (meter 기준 변환)
 
 ## 10. AI 활용 요약 (본 단계)
 
-| 활동 | AI 활용 |
-|------|---------|
-| README·코드 갭 분석 | 프로젝트 탐색, 갭 표 작성 |
-| Dual-Track TDD / ARRR 설명 | 방법론 정리, 과제 적용 예시 |
-| 브랜치 전략 | 단계별 브랜치·완료 기준 제안 |
-| 보고서·Transcript | Report/Prompting 폴더 구조 및 01번 산출물 생성 |
+| 활동 | 내용 | Speaker |
+|------|------|---------|
+| README·코드 갭 분석 | 갭 표, 시나리오 초안 | AI |
+| Dual-Track / ARRR | 방법론·브랜치 로드맵 | AI |
+| Mom Test Q4·Q5 | 큰/작은 입력 경험 | **사람** |
+| Mom Test PASS/FAIL | V1~V8 판정 | AI 제안 → **사람** 확정 |
+| 반올림·0·음수·오류 문구 | 최종 규칙 | **사람** |
+
+상세: §11. Transcript: `Prompting/01-spec-requirements-analysis-transcript.md`.

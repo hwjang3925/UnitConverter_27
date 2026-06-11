@@ -13,6 +13,17 @@ Unit Converter 실습 — Dual-Track TDD 단계별 보고서 목록
 - `{phase-slug}`: kebab-case 단계명
 - Report / Transcript **동일 번호·slug** 사용
 
+## Attribution (Speaker / Authority)
+
+| 산출물 | 규칙 |
+|--------|------|
+| **Prompting/** | Turn User = 사람, Turn Assistant = AI |
+| **Report/** | 표에 Speaker / Authority 열 (`.cursor/rules/00-shared-report-prompting-format.mdc`) |
+| **코드** | git commit 작성자 |
+
+Speaker: `사람` \| `AI` \| `AI 제안 → 사람 확정`  
+Authority (결정): `사람` \| `AI 제안 → 사람 확정`
+
 ## 단계 매핑
 
 | No | Phase | Branch | Report | Transcript |

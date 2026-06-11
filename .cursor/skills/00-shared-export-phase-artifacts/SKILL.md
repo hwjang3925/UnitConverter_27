@@ -18,7 +18,10 @@ description: >-
 
 Skip step **04**.
 
-## Workflow
+## Attribution
+
+- **Prompting/**: Turn User = 사람, Turn Assistant = AI (no suffix on every line)
+- **Report/**: use Speaker and Authority columns per `00-shared-report-prompting-format.mdc`
 
 1. Create `Report/{NN}-{slug}-report.md` (see `00-shared-report-prompting-format.mdc`)
 2. Export `Prompting/{NN}-{slug}-transcript.md` from agent-transcripts JSONL

@@ -30,12 +30,14 @@ Filter vague praise and hypotheticals. Validate requirements with **concrete pro
 
 ## PASS/FAIL output
 
-Record in Report § Mom Test:
+Record in Report §11 Mom Test using **Speaker** and **Authority** columns (see `00-shared-report-prompting-format.mdc`):
 
-- Question (Mom Test style)
-- Answer (evidence from README/code)
-- PASS or FAIL
-- Impact on AT-1 … AT-5 if FAIL
+**Problem table:** `| ID | Question | Answer | Speaker |`
+
+**Validation table:** `| ID | Validation | Result | AT | Authority |`
+
+- Result: PASS / FAIL / NOTE (known limitation)
+- Authority on PASS/FAIL: always **사람** (or **AI 제안 → 사람 확정**)
 
 ## User role
 

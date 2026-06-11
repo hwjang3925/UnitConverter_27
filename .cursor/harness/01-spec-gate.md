@@ -8,7 +8,7 @@ Branch must be **`spec`**.
 
 ## Required before leaving spec
 
-- [ ] Mom Test Q&A recorded (PASS/FAIL on key requirements)
+- [x] Mom Test Q&A with **Speaker / Authority** columns (§11)
 - [ ] Rounding: 1 decimal on converted feet/yard output
 - [ ] Zero allowed; negative rejected
 - [ ] Error messages match starter strings

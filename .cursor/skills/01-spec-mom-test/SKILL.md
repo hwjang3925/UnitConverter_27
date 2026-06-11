@@ -16,6 +16,10 @@ Branch: **`spec`**. User owns PASS/FAIL decisions.
 | Q1 | What pain does the user have when converting length units without this tool? |
 | Q2 | What problem does README output (`8.2 feet`, `2.7 yard`) solve vs raw floats? |
 | Q3 | What breaks today in starter code (rounding, negative, etc.)? |
+| Q4 | Very large length input — was converted output unintuitive? |
+| Q5 | Small input like `0.02` — was conversion hard to interpret? |
+
+Record answers with **Speaker** column (`사람` for user experience).
 
 ## Step 2 — Requirement validation (PASS/FAIL)
 
@@ -26,14 +30,28 @@ Branch: **`spec`**. User owns PASS/FAIL decisions.
 | V3 | Converting `meter:-1` hides input error? | AT-4 |
 | V4 | Changing error strings breaks assignment consistency? | AT-2 … AT-5 |
 | V5 | Basic + quality reqs doable without step-04 extras? | scope |
+| V6 | README requires max input / scientific notation? | scope |
+| V7 | Small positive decimals like `0.02` valid input? | AT-1 (optional) |
+| V8 | 1-decimal rounding still confusing for tiny inputs? | NOTE |
+
+**Authority** on Result: `사람` or `AI 제안 → 사람 확정`.
 
 ## Step 3 — Record
 
-Add **§ Mom Test** to `Report/01-spec-requirements-analysis-report.md` or create `Report/01-spec-mom-test-report.md` with:
+Add **§11 Mom Test** to `Report/01-spec-requirements-analysis-report.md`:
 
-- Questions, answers, PASS/FAIL
-- Link each PASS to AT-ID
-- Confirmed rules: round 1 decimal, zero OK, negative reject, error strings
+```markdown
+### 11.1 Problem (Speaker)
+| ID | Question | Answer | Speaker |
+
+### 11.2 Validation (Authority)
+| ID | Validation | Result | AT | Authority |
+
+### 11.3 Decisions (Authority)
+| Decision | Value | Authority |
+```
+
+Do not duplicate full transcript; reference `Prompting/01-*-transcript.md` for dialogue.
 
 ## Step 4 — Gate check
 

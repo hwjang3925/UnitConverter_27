@@ -2,6 +2,8 @@
 
 Numbering: `{NN}-{phase-slug}-*` (aligned with `Report/` and `Prompting/`)
 
+**Attribution:** Transcript = User/Assistant turns; Report = Speaker + Authority columns (see `rules/00-shared-report-prompting-format.mdc`).
+
 | NN | Branch | phase-slug |
 |----|--------|------------|
 | 00 | shared | `shared` |
