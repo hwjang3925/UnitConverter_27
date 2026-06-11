@@ -8,7 +8,8 @@ Current branch must be **`green`**.
 2. Pick one failing unit test (Red) → minimal code (Green) → Refactor
 3. Repeat until acceptance tests AT-1 … AT-5, AT-1b are **Green**
 4. Follow domain rules: 1 decimal rounding, zero allowed, error message strings
-5. On phase complete: run export-artifacts workflow for step **03**
+5. Logic lives in **`conversion.py`**; `UnitConverter.py` stays thin CLI
+6. On phase complete: run export-artifacts workflow for step **03**
 
 ## Do not
 

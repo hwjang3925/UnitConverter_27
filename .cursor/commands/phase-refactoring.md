@@ -5,7 +5,7 @@ Current branch must be **`refactoring`**.
 ## Do
 
 1. Confirm branch: `git branch --show-current` → `refactoring`
-2. Refactor toward OCP/SRP: `InputParser`, `UnitRegistry`, `Converter`, `OutputFormatter`
+2. Refactor **`conversion.py`** toward OCP/SRP: `InputParser`, `UnitRegistry`, `Converter`, `OutputFormatter`
 3. Run `pytest` after **each** refactor step; all tests must stay Green
 4. Remove duplication; keep behavior identical to spec
 5. On phase complete: run export-artifacts workflow for step **05**

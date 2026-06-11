@@ -32,6 +32,15 @@ alwaysApply: false
 | Not a number / negative | `Invalid number: {value_str}` |
 | Unknown unit | `Unknown unit: {unit}` |
 
+## File layout (green+)
+
+| File | Role |
+|------|------|
+| `UnitConverter.py` | CLI entry (README: `python UnitConverter.py`) — `input()` / `print()` only |
+| `conversion.py` | Parse, validate, convert, round — importable for unit tests |
+
+Do not confuse `UnitConverter.py` (PascalCase, run script) with logic modules (snake_case).
+
 ## Design (target after green / in refactoring)
 
 - `InputParser` — parse and validate input

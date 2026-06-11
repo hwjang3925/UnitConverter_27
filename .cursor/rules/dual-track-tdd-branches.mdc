@@ -27,7 +27,7 @@ Method: **Outside-In** — acceptance tests first, then unit-test RGR.
 **Allowed**
 - Unit tests (Red → Green → Refactor per behavior)
 - Minimal production code until acceptance tests pass
-- Extract logic from `UnitConverter.py` as tests drive design
+- Extract logic from `UnitConverter.py` into **`conversion.py`** as tests drive design
 
 **Forbidden**
 - Changing acceptance tests to match wrong implementation (unless spec error)

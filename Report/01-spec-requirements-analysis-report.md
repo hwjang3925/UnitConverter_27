@@ -15,6 +15,8 @@
 
 README 요구사항과 starter 코드(`UnitConverter.py`) 간 갭을 분석하고, Dual-Track TDD 1번 방식(인수 테스트 먼저 → 내부 RGR)으로 진행하기 위한 **인수 시나리오·단위 테스트·설계 방향**을 정리한다.
 
+**공식 PRD:** `doc/PRD.md` (본 Report는 분석·TDD 계획 보조 문서)
+
 ---
 
 ## 2. 현재 프로젝트 상태
@@ -188,3 +190,15 @@ InputParser (검증)  →  Converter (meter 기준 변환)
 | Dual-Track TDD / ARRR 설명 | 방법론 정리, 과제 적용 예시 |
 | 브랜치 전략 | 단계별 브랜치·완료 기준 제안 |
 | 보고서·Transcript | Report/Prompting 폴더 구조 및 01번 산출물 생성 |
+
+---
+
+## 11. PRD (Product Requirements Document)
+
+| Item | Value |
+|------|-------|
+| Location | **`doc/PRD.md`** |
+| Created | 2026-06-11 (green 단계에서 spec 산출물 소급) |
+| Authority | AI 작성 → 사람 요청 |
+
+본 Report(갭 분석·TDD 계획)와 **쌍**으로 사용한다. **기능·수용 기준·범위의 단일 출처**는 PRD.

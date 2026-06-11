@@ -19,7 +19,7 @@ Prompting/{NN}-{phase-slug}-transcript.md
 |----|------|-------|--------|
 | 01 | [01-spec-requirements-analysis-transcript.md](./01-spec-requirements-analysis-transcript.md) | Spec / Requirements Analysis | `spec` |
 | 02 | [02-acceptance-red-transcript.md](./02-acceptance-red-transcript.md) | Acceptance Test Red | `red` |
-| 03 | (예정) | Basic Implementation Green | `green` |
+| 03 | [03-basic-green-transcript.md](./03-basic-green-transcript.md) | Basic Implementation Green | `green` |
 | ~~04~~ | — | **제외** | — |
 | 05 | (예정) | Refactoring | `refactoring` |
 

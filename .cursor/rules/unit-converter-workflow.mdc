@@ -10,10 +10,10 @@ alwaysApply: true
 | No | Branch | Role | Status |
 |----|--------|------|--------|
 | 01 | `spec` | Analyze (요구사항·시나리오) | Complete |
-| 02 | `red` | Outer loop Red (인수 테스트만) | Next |
-| 03 | `green` | Inner RGR → outer Green | Pending |
+| 02 | `red` | Outer loop Red (인수 테스트만) | Complete |
+| 03 | `green` | Inner RGR → outer Green | Complete |
 | ~~04~~ | — | **Excluded** (README 추가 요구사항) | Skip |
-| 05 | `refactoring` | Refactor (OCP/SRP, Green 유지) | Pending |
+| 05 | `refactoring` | Refactor (OCP/SRP, Green 유지) | Next |
 
 Flow: `spec` → `red` → `green` → `refactoring`
 
@@ -27,6 +27,7 @@ Flow: `spec` → `red` → `green` → `refactoring`
 
 On each phase completion, create or update:
 
+- `doc/PRD.md` — **Product Requirements** (spec phase; canonical requirements)
 - `Report/{NN}-{phase-slug}-report.md`
 - `Prompting/{NN}-{phase-slug}-transcript.md`
 - `Report/00-index.md` and `Prompting/00-index.md`
@@ -43,7 +44,18 @@ On each phase completion, create or update:
 - In scope: basic conversion, input validation, OCP/SRP, Dual-Track TDD, reports/transcripts.
 - Out of scope (step 04 excluded): config externalization (JSON/YAML), dynamic unit registration, JSON/CSV output formats.
 
+## Source file naming
+
+| File | Role | Notes |
+|------|------|-------|
+| `UnitConverter.py` | CLI entry | Keep for README / subprocess acceptance tests |
+| `conversion.py` | Domain logic | Renamed from `unit_converter.py` (post-green 2안) |
+| **`doc/PRD.md`** | Product requirements | Spec phase 산출물 — 기능·수용 기준·범위 |
+
+Refactoring may split `conversion.py` into classes or a `unit_converter/` package (OCP/SRP).
+
 ## Reference
 
+- **PRD:** `doc/PRD.md`
 - Requirements and scenarios: `Report/01-spec-requirements-analysis-report.md`
 - README: `README.md`
