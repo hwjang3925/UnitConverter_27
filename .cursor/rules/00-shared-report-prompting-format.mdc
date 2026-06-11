@@ -1,0 +1,26 @@
+---
+description: Report and Prompting naming templates (00 shared)
+globs: "Report/**,Prompting/**"
+alwaysApply: false
+---
+
+# Report & Prompting Format
+
+## File naming
+
+```
+Report/{NN}-{phase-slug}-report.md
+Prompting/{NN}-{phase-slug}-transcript.md
+```
+
+- `{NN}`: 01, 02, 03, 05 (skip 04)
+
+## Report header
+
+Include: Step, Phase, Branch, Method, Date, Status.
+
+## Transcript header
+
+Include: Step, Phase, Branch, Exported, Source.
+
+Update `Report/00-index.md` and `Prompting/00-index.md` on phase completion.

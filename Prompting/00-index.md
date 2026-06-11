@@ -15,7 +15,7 @@ Prompting/{NN}-{phase-slug}-transcript.md
 | No | File | Phase | Branch |
 |----|------|-------|--------|
 | 01 | [01-spec-requirements-analysis-transcript.md](./01-spec-requirements-analysis-transcript.md) | Spec / Requirements Analysis | `spec` |
-| 02 | (예정) | Acceptance Test Red | `red` |
+| 02 | [02-acceptance-red-transcript.md](./02-acceptance-red-transcript.md) | Acceptance Test Red | `red` |
 | 03 | (예정) | Basic Implementation Green | `green` |
 | ~~04~~ | — | **제외** | — |
 | 05 | (예정) | Refactoring | `refactoring` |
@@ -26,6 +26,12 @@ Prompting/{NN}-{phase-slug}-transcript.md
 
 ## Cursor 설정
 
-- Rules: `.cursor/rules/`
-- Skills: `.cursor/skills/`
-- Commands: `.cursor/commands/`
+See `.cursor/00-index.md`.
+
+| Command | Step |
+|---------|------|
+| `/01-spec-mom-test` | 01 spec |
+| `/02-phase-red` | 02 red |
+| `/03-phase-green` | 03 green |
+| `/05-phase-refactoring` | 05 refactoring |
+| `/00-export-artifacts` | any |

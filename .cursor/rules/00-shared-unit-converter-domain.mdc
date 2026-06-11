@@ -1,0 +1,40 @@
+---
+description: Unit Converter domain rules validation and design (00 shared)
+globs: "**/*.py,tests/**"
+alwaysApply: false
+---
+
+# Unit Converter Domain
+
+## Conversion ratios (meter base)
+
+- `1 meter = 3.28084 feet`
+- `1 meter = 1.09361 yard`
+
+## Output formatting
+
+- Round **converted** feet/yard to **1 decimal place**
+- `meter:2.5` → `8.2 feet`, `2.7 yard`
+- `meter:0` → `0.0 feet`, `0.0 yard`
+
+## Input rules
+
+- Format: `unit:value`
+- Units: `meter`, `feet`, `yard`
+- **Zero allowed**; **negative rejected**
+
+## Error messages (exact strings)
+
+| Condition | Message |
+|-----------|---------|
+| Missing colon | `Invalid format. Use unit:value (ex: meter:2.5)` |
+| Not a number / negative | `Invalid number: {value_str}` |
+| Unknown unit | `Unknown unit: {unit}` |
+
+## Design target (green / refactoring)
+
+- `InputParser`, `UnitRegistry`, `Converter`, `OutputFormatter`
+
+## Testing
+
+- pytest; acceptance via CLI; unit tests for math/parsing/rounding

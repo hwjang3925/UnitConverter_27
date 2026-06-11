@@ -18,13 +18,20 @@ Unit Converter 실습 — Dual-Track TDD 단계별 보고서 목록
 | No | Phase | Branch | Report | Transcript |
 |----|-------|--------|--------|------------|
 | 01 | Spec / Requirements Analysis | `spec` | ✅ Complete | ✅ |
-| 02 | Acceptance Test Red (Outer Loop) | `red` | (예정) | (예정) |
+| 02 | Acceptance Test Red (Outer Loop) | `red` | ✅ Complete | ✅ |
 | 03 | Basic Implementation Green (Inner RGR) | `green` | (예정) | (예정) |
 | ~~04~~ | Extra Requirements | — | **제외** | **제외** |
 | 05 | Refactoring | `refactoring` | (예정) | (예정) |
 
 ## Cursor 설정
 
-- Rules: `.cursor/rules/`
-- Skills: `.cursor/skills/`
-- Commands: `.cursor/commands/` (`/phase-red`, `/phase-green`, `/phase-refactoring`, `/export-artifacts`)
+See `.cursor/00-index.md` for full layout.
+
+| Folder | Examples |
+|--------|----------|
+| `models/` | `01-spec-model-notes.md` |
+| `agents/` | `01-spec-requirements-analyst.md` |
+| `harness/` | `01-spec-gate.md` |
+| `rules/` | `01-spec-mom-test.mdc` |
+| `skills/` | `01-spec-mom-test/SKILL.md` |
+| `commands/` | `/01-spec-mom-test`, `/02-phase-red`, `/00-export-artifacts` |
