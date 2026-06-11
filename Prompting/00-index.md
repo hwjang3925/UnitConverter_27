@@ -21,7 +21,7 @@ Prompting/{NN}-{phase-slug}-transcript.md
 | 02 | [02-acceptance-red-transcript.md](./02-acceptance-red-transcript.md) | Acceptance Test Red | `red` |
 | 03 | [03-basic-green-transcript.md](./03-basic-green-transcript.md) | Basic Implementation Green | `green` |
 | ~~04~~ | — | **제외** | — |
-| 05 | (예정) | Refactoring | `refactoring` |
+| 05 | [05-refactoring-transcript.md](./05-refactoring-transcript.md) | Refactoring | `refactoring` |
 
 ## Export 시점
 

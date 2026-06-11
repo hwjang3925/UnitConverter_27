@@ -217,7 +217,7 @@ OutputFormatter (텍스트 출력)
 | Spec / Analyze | `spec` | ✅ | 본 PRD + Report/01 |
 | Acceptance Red | `red` | ✅ | 2 failed (의도) → green |
 | Basic Green | `green` | ✅ | 11 passed |
-| Refactoring | `refactoring` | ⏸ | OCP/SRP 분리 예정 |
+| Refactoring | `refactoring` | ⏸ | **✅ Complete** |
 
 ---
 

@@ -37,7 +37,7 @@ alwaysApply: false
 | File | Role |
 |------|------|
 | `UnitConverter.py` | CLI entry (README: `python UnitConverter.py`) — `input()` / `print()` only |
-| `conversion.py` | Parse, validate, convert, round — importable for unit tests |
+| `conversion/` | Parse, validate, convert, round — `InputParser`, `UnitRegistry`, `Converter`, `OutputFormatter` |
 
 Do not confuse `UnitConverter.py` (PascalCase, run script) with logic modules (snake_case).
 

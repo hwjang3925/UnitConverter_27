@@ -38,7 +38,7 @@ Unit Converter 실습 — Dual-Track TDD 단계별 보고서 목록
 | 02 | Acceptance Test Red (Outer Loop) | `red` | ✅ Complete | ✅ |
 | 03 | Basic Implementation Green (Inner RGR) | `green` | ✅ Complete (§9 rename) | ✅ |
 | ~~04~~ | Extra Requirements | — | **제외** | **제외** |
-| 05 | Refactoring | `refactoring` | (예정) | (예정) |
+| 05 | Refactoring | `refactoring` | ✅ Complete | ✅ |
 
 ## Cursor commands
 

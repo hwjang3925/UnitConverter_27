@@ -13,7 +13,7 @@ alwaysApply: true
 | 02 | `red` | Outer loop Red (인수 테스트만) | Complete |
 | 03 | `green` | Inner RGR → outer Green | Complete |
 | ~~04~~ | — | **Excluded** (README 추가 요구사항) | Skip |
-| 05 | `refactoring` | Refactor (OCP/SRP, Green 유지) | Next |
+| 05 | `refactoring` | Refactor (OCP/SRP, Green 유지) | Complete |
 
 Flow: `spec` → `red` → `green` → `refactoring`
 
@@ -49,7 +49,7 @@ On each phase completion, create or update:
 | File | Role | Notes |
 |------|------|-------|
 | `UnitConverter.py` | CLI entry | Keep for README / subprocess acceptance tests |
-| `conversion.py` | Domain logic | Renamed from `unit_converter.py` (post-green 2안) |
+| `conversion/` | Domain package — Parser, Registry, Converter, Formatter |
 | **`doc/PRD.md`** | Product requirements | Spec phase 산출물 — 기능·수용 기준·범위 |
 
 Refactoring may split `conversion.py` into classes or a `unit_converter/` package (OCP/SRP).
