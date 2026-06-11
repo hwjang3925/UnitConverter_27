@@ -2661,3 +2661,35 @@ pytest 전체/분리 실행, CLI pipe smoke test 가이드 제공.
 
 가이드 명령 실행 — pytest 11/11, acceptance 7, unit 4, CLI 3케이스 확인. `doc/terminal-self-test.md` 및 HTML·Report 갱신.
 
+## Turn 40 — User
+
+기존 Class diagram을 그려서 현재 코드의 문제점을 시각화할 수 있을까요?
+
+## Turn 40 — Assistant
+
+As-Is/To-Be Mermaid 다이어그램 설명 (SRP·OCP, inch 추가 변경점).
+
+## Turn 41 — User
+
+네 저장해주세요
+
+## Turn 41 — Assistant
+
+`doc/diagrams/` — as-is-class-diagram.md, to-be-class-diagram.md, README. doc/Report/PRD 인덱스 링크 추가.
+
+## Turn 42 — User
+
+Green 단계에서 빼먹은 Golden Master 구축 가이드 요청
+
+## Turn 42 — Assistant
+
+Golden Master 개념·케이스·폴더 구조·Refactoring 연계 가이드 제공.
+
+## Turn 43 — User
+
+Golden Master 구축해줘
+
+## Turn 43 — Assistant
+
+`tests/golden/` — 10 master files, API+CLI 20 tests, `doc/golden-master.md`, Report/03 §4.2. **31 passed**.
+

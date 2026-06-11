@@ -64,7 +64,30 @@ python -m pytest tests/ -v
 | unit (`tests/unit/`) | 4 | Green | 0.05s |
 | **합계** | **11** | **Green** | **0.94s** (`-v`) |
 
-### 4.1 Terminal self-test 검증 (2026-06-11)
+### 4.2 Golden Master (post-green, refactoring 전)
+
+| Item | Value |
+|------|-------|
+| Date | 2026-06-11 |
+| Branch | `refactoring` (Green baseline 스냅샷) |
+| Location | `tests/golden/masters/`, `doc/golden-master.md` |
+
+| Suite | Count | Role |
+|-------|-------|------|
+| golden API | 10 | `conversion.run()` 전체 출력 스냅샷 |
+| golden CLI | 10 | `UnitConverter.py` (prompt 제거 후 동일 master) |
+| **전체 합계** | **31** | 11 + 20 golden |
+
+```text
+python -m pytest tests/ -q
+→ 31 passed
+```
+
+Refactoring 안전망: **master 파일 변경 없이** 구조만 수정 → 31 Green 유지.
+
+---
+
+### 4.3 Terminal self-test 검증 (2026-06-11)
 
 | Speaker | Content |
 |---------|---------|

@@ -158,6 +158,8 @@ InputParser (검증)  →  Converter (meter 기준 변환)
 | `Converter` | meter 기준 변환 로직 |
 | `OutputFormatter` | 출력 형식 (text → JSON/CSV 확장) |
 
+**다이어그램:** `doc/diagrams/as-is-class-diagram.md` (현재), `doc/diagrams/to-be-class-diagram.md` (목표)
+
 ---
 
 ## 8. spec 단계 체크리스트

@@ -24,12 +24,33 @@ pip install -r requirements-dev.txt
 
 ## 2. pytest — 자동 self test
 
-### 2.1 전체 (11 tests)
+### 2.1 전체 (31 tests — acceptance + unit + golden)
 
 **명령:**
 
 ```powershell
 python -m pytest tests/ -v
+```
+
+**결과 (Golden Master 포함):**
+
+```text
+31 passed
+```
+
+| Suite | Count |
+|-------|-------|
+| acceptance | 7 |
+| unit | 4 |
+| golden (API + CLI) | 20 |
+| **합계** | **31** |
+
+### 2.2 Green only (11 tests)
+
+**명령:**
+
+```powershell
+python -m pytest tests/acceptance/ tests/unit/ -v
 ```
 
 **결과 (검증됨):**
@@ -39,13 +60,16 @@ collected 11 items
 … 11 passed in 0.94s
 ```
 
-| Suite | Count | Status | Duration |
-|-------|-------|--------|----------|
-| acceptance | 7 | ✅ PASSED | (included) |
-| unit | 4 | ✅ PASSED | (included) |
-| **합계** | **11** | **✅ PASSED** | **0.94s** |
+### 2.3 Golden Master only
 
-### 2.2 요약만
+```powershell
+python -m pytest tests/golden/ -v
+# → 20 passed
+```
+
+See [`golden-master.md`](./golden-master.md).
+
+### 2.4 요약만
 
 **명령:**
 

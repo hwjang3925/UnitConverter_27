@@ -166,7 +166,7 @@ python UnitConverter.py
 | **AT-4** | — | `meter:-1` | `Invalid number: -1` |
 | **AT-5** | — | `mile:1` | `Unknown unit: mile` |
 
-**완료 기준:** `python -m pytest tests/` — acceptance 7 + unit 4 = **11 passed**.
+**완료 기준:** `python -m pytest tests/` — acceptance 7 + unit 4 + golden 20 = **31 passed** (Golden Master: `doc/golden-master.md`).
 
 ---
 
@@ -241,6 +241,7 @@ OutputFormatter (텍스트 출력)
 | `Report/02-acceptance-red-report.md` | Red 단계 결과 |
 | `Report/03-basic-green-report.md` | Green 구현·rename |
 | `conversion.py` | 현재 도메인 로직 |
+| `doc/diagrams/` | As-Is / To-Be 아키텍처 다이어그램 |
 | `tests/` | acceptance + unit |
 
 ---

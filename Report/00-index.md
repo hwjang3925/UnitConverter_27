@@ -27,6 +27,8 @@ Unit Converter 실습 — Dual-Track TDD 단계별 보고서 목록
 | `doc/README.md` | doc 폴더 안내 |
 | **`Report/green-test-results.html`** | Green 단계 pytest 결과 (브라우저) |
 | **`doc/terminal-self-test.md`** | 터미널 self-test 가이드 + 검증 로그 |
+| **`doc/golden-master.md`** | Golden Master 가이드 (10 cases × API/CLI) |
+| **`doc/diagrams/`** | As-Is / To-Be 아키텍처 다이어그램 |
 
 ## 단계 매핑
 
