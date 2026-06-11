@@ -25,6 +25,8 @@ Unit Converter 실습 — Dual-Track TDD 단계별 보고서 목록
 |------|------|
 | **`doc/PRD.md`** | Product Requirements Document (기능·수용 기준·범위) |
 | `doc/README.md` | doc 폴더 안내 |
+| **`Report/green-test-results.html`** | Green 단계 pytest 결과 (브라우저) |
+| **`doc/terminal-self-test.md`** | 터미널 self-test 가이드 + 검증 로그 |
 
 ## 단계 매핑
 

@@ -2645,3 +2645,19 @@ PRD 문서는 doc 디렉토리 밑에 생성을 해주세요.
 
 `doc/PRD.md` 작성 — README·Report/01·Mom Test·green 확정 반영. `doc/README.md`, Report/00-index, `.cursor` 참조 추가.
 
+## Turn 38 — User
+
+terminal에서 self 테스트할 수 있는 방법을 알려줄래요?
+
+## Turn 38 — Assistant
+
+pytest 전체/분리 실행, CLI pipe smoke test 가이드 제공.
+
+## Turn 39 — User
+
+너가 가이드한 것을 테스트 해보고 결과를 공유해줄테니 그것까지 반영해서 저장해줘
+
+## Turn 39 — Assistant
+
+가이드 명령 실행 — pytest 11/11, acceptance 7, unit 4, CLI 3케이스 확인. `doc/terminal-self-test.md` 및 HTML·Report 갱신.
+

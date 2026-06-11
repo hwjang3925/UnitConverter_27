@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Green Phase — Test Results | Unit Converter</title>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --surface: #1a2332;
+      --surface2: #243044;
+      --text: #e7ecf3;
+      --muted: #8b9cb3;
+      --pass: #3dd68c;
+      --pass-bg: rgba(61, 214, 140, 0.12);
+      --accent: #5b9cff;
+      --border: #2d3a4f;
+      --acceptance: #a78bfa;
+      --unit: #38bdf8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 2rem 1.25rem 3rem; }
+    header { margin-bottom: 2rem; }
+    h1 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; }
+    .subtitle { color: var(--muted); margin-top: 0.35rem; font-size: 0.95rem; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+    }
+    .card.highlight {
+      border-color: var(--pass);
+      background: linear-gradient(135deg, var(--surface) 0%, var(--pass-bg) 100%);
+    }
+    .card .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+    .card .value { font-size: 1.75rem; font-weight: 700; margin-top: 0.25rem; }
+    .card .value.pass { color: var(--pass); }
+    .card .detail { font-size: 0.85rem; color: var(--muted); margin-top: 0.35rem; }
+    section { margin-bottom: 2rem; }
+    section h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .badge.acceptance { background: rgba(167, 139, 250, 0.2); color: var(--acceptance); }
+    .badge.unit { background: rgba(56, 189, 248, 0.2); color: var(--unit); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
+    th {
+      background: var(--surface2);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(91, 156, 255, 0.04); }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--pass);
+    }
+    .status::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--pass);
+    }
+    code {
+      font-family: "Cascadia Code", "Consolas", monospace;
+      font-size: 0.82rem;
+      background: var(--surface2);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      color: var(--accent);
+    }
+    .scenario-id { font-weight: 600; color: var(--accent); white-space: nowrap; }
+    footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .cmd {
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      background: var(--surface2);
+      border-radius: 8px;
+      font-family: monospace;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    pre.output {
+      margin-top: 0.5rem;
+      padding: 0.75rem 1rem;
+      background: #0a0e14;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: "Cascadia Code", "Consolas", monospace;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      color: #b8c5d6;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    .verified {
+      font-size: 0.75rem;
+      color: var(--pass);
+      margin-top: 0.35rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Green Phase — Test Results</h1>
+      <p class="subtitle">Unit Converter · Dual-Track TDD · Branch <code>green</code></p>
+    </header>
+
+    <div class="summary">
+      <div class="card highlight">
+        <div class="label">Total</div>
+        <div class="value pass">11 / 11</div>
+        <div class="detail">All tests passed</div>
+      </div>
+      <div class="card">
+        <div class="label">Acceptance</div>
+        <div class="value pass">7</div>
+        <div class="detail">CLI subprocess (AT-1 … AT-5)</div>
+      </div>
+      <div class="card">
+        <div class="label">Unit</div>
+        <div class="value pass">4</div>
+        <div class="detail">parse_input · convert_to_all_units</div>
+      </div>
+      <div class="card">
+        <div class="label">Duration</div>
+        <div class="value">0.94s</div>
+        <div class="detail">Verified 2026-06-11 · pytest 9.0.3 · Python 3.14.5</div>
+      </div>
+    </div>
+
+    <section>
+      <h2><span class="badge acceptance">Acceptance</span> CLI — 7 tests</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Scenario</th>
+            <th>Test</th>
+            <th>Input / Assert</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="scenario-id">AT-1</td>
+            <td><code>test_at1_meter_input_shows_rounded_feet_and_yard</code></td>
+            <td><code>meter:2.5</code> → <code>8.2 feet</code>, <code>2.7 yard</code></td>
+            <td><span class="status">PASSED</span></td>
+          </tr>
+          <tr>
+            <td class="scenario-id">AT-1</td>
+            <td><code>test_at1_meter_input_shows_meter_line</code></td>
+            <td><code>meter:2.5</code> → <code>2.5 meter = 2.5 meter</code></td>
+            <td><span class="status">PASSED</span></td>
+          </tr>
+          <tr>
+            <td class="scenario-id">AT-1b</td>
+            <td><code>test_at1b_zero_input_shows_zero_conversions</code></td>
+            <td><code>meter:0</code> → <code>0.0 feet</code>, <code>0.0 yard</code></td>
+            <td><span class="status">PASSED</span></td>
+          </tr>
+          <tr>
+            <td class="scenario-id">AT-2</td>
+            <td><code>test_at2_missing_colon_shows_format_error</code></td>
+            <td><code>meter2.5</code> → format error message</td>
+            <td><span class="status">PASSED</span></td>
+          </tr>
+          <tr>
+            <td class="scenario-id">AT-3</td>
+            <td><code>test_at3_non_numeric_value_shows_number_error</code></td>
+            <td><code>meter:abc</code> → <code>Invalid number: abc</code></td>
+            <td><span class="status">PASSED</span></td>
+          </tr>
+          <tr>
+            <td class="scenario-id">AT-4</td>
+            <td><code>test_at4_negative_value_shows_number_error</code></td>
+            <td><code>meter:-1</code> → <code>Invalid number: -1</code></td>
+            <td><span class="status">PASSED</span></td>
+          </tr>
+          <tr>
+            <td class="scenario-id">AT-5</td>
+            <td><code>test_at5_unknown_unit_shows_unit_error</code></td>
+            <td><code>mile:1</code> → <code>Unknown unit: mile</code></td>
+            <td><span class="status">PASSED</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2><span class="badge unit">Unit</span> conversion.py — 4 tests</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Scenario</th>
+            <th>Test</th>
+            <th>Description</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="scenario-id">UT-11</td>
+            <td><code>test_meter_to_feet_and_yard_rounded</code></td>
+            <td>2.5 m → feet/yard 1 decimal rounding</td>
+            <td><span class="status">PASSED</span></td>
+          </tr>
+          <tr>
+            <td class="scenario-id">UT-11</td>
+            <td><code>test_zero_conversions_show_one_decimal</code></td>
+            <td>0 m → <code>0.0 feet</code>, <code>0.0 yard</code></td>
+            <td><span class="status">PASSED</span></td>
+          </tr>
+          <tr>
+            <td class="scenario-id">UT-8</td>
+            <td><code>test_parse_input_negative_rejected</code></td>
+            <td><code>meter:-1</code> → error, no unit/value</td>
+            <td><span class="status">PASSED</span></td>
+          </tr>
+          <tr>
+            <td class="scenario-id">UT-9</td>
+            <td><code>test_parse_input_zero_allowed</code></td>
+            <td><code>meter:0</code> → valid parse</td>
+            <td><span class="status">PASSED</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Red → Green fixes</h2>
+      <table>
+        <thead>
+          <tr><th>Was failing (red)</th><th>Fix (green)</th><th>Verified by</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>AT-1 — no 1-decimal rounding</td>
+            <td><code>round(..., 1)</code> + <code>:.1f</code> on feet/yard</td>
+            <td>AT-1, UT-11</td>
+          </tr>
+          <tr>
+            <td>AT-4 — negative allowed</td>
+            <td><code>value &lt; 0</code> → <code>Invalid number: {value_str}</code></td>
+            <td>AT-4, UT-8</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Terminal verification (guide 실행 결과)</h2>
+      <p class="subtitle" style="margin-bottom: 1rem;">PowerShell · 프로젝트 루트 · 2026-06-11 Agent 실행</p>
+      <table>
+        <thead>
+          <tr><th>Command</th><th>Result</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>python -m pytest tests/ -v</code></td>
+            <td><span class="status">11 passed</span> in 0.94s</td>
+          </tr>
+          <tr>
+            <td><code>python -m pytest tests/ -q</code></td>
+            <td><span class="status">11 passed</span> in 1.18s</td>
+          </tr>
+          <tr>
+            <td><code>python -m pytest tests/acceptance/ -v</code></td>
+            <td><span class="status">7 passed</span> in 0.92s</td>
+          </tr>
+          <tr>
+            <td><code>python -m pytest tests/unit/ -v</code></td>
+            <td><span class="status">4 passed</span> in 0.05s</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 style="margin-top: 1.5rem; font-size: 1rem;">CLI smoke (pipe)</h2>
+      <div class="cmd">"meter:2.5" | python UnitConverter.py</div>
+      <pre class="output">Insert value for converting (ex: meter:2.5): 2.5 meter = 2.5 meter
+2.5 meter = 8.2 feet
+2.5 meter = 2.7 yard</pre>
+      <p class="verified">✓ verified</p>
+
+      <div class="cmd">"meter:-1" | python UnitConverter.py</div>
+      <pre class="output">Insert value for converting (ex: meter:2.5): Invalid number: -1</pre>
+      <p class="verified">✓ verified</p>
+
+      <div class="cmd">"meter2.5" | python UnitConverter.py</div>
+      <pre class="output">Insert value for converting (ex: meter:2.5): Invalid format. Use unit:value (ex: meter:2.5)</pre>
+      <p class="verified">✓ verified</p>
+    </section>
+
+    <div class="cmd">python -m pytest tests/ -v</div>
+
+    <footer>
+      Generated for Green phase · Verified 2026-06-11 ·
+      <a href="../doc/terminal-self-test.md">doc/terminal-self-test.md</a> ·
+      <a href="03-basic-green-report.md">03-basic-green-report.md</a> ·
+      <a href="../doc/PRD.md">doc/PRD.md</a>
+      <br>
+      Open this file in a browser: <code>Report/green-test-results.html</code>
+    </footer>
+  </div>
+</body>
+</html>
