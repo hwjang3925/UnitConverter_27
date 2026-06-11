@@ -1,0 +1,54 @@
+---
+description: Report and Prompting folder naming and templates
+globs: "Report/**,Prompting/**"
+alwaysApply: false
+---
+
+# Report & Prompting Format
+
+## File naming
+
+```
+Report/{NN}-{phase-slug}-report.md
+Prompting/{NN}-{phase-slug}-transcript.md
+```
+
+- `{NN}`: two digits (01, 02, 03, 05 — skip 04)
+- Same `{NN}` and `{phase-slug}` for report and transcript pairs
+
+## Report header (required)
+
+```markdown
+# {NN} — {Phase Title} — Report
+
+| Item | Value |
+|------|-------|
+| Step | {NN} |
+| Phase | ... |
+| Branch | `...` |
+| Method | Dual-Track TDD #1 (Outside-In) |
+| Date | YYYY-MM-DD |
+| Status | In Progress / Complete |
+```
+
+Include: goals, work done, test results, checklist, next step.
+
+## Transcript header (required)
+
+```markdown
+# {NN} — {Phase Title} — Transcript
+
+| Item | Value |
+|------|-------|
+| Step | {NN} |
+| Phase | ... |
+| Branch | `...` |
+| Exported | YYYY-MM-DD |
+| Source | Cursor Agent Transcript |
+```
+
+Body: `## Turn N — User` / `## Turn N — Assistant` sections; omit tool-call noise when readable.
+
+## Index files
+
+Update `Report/00-index.md` and `Prompting/00-index.md` when a phase completes.
